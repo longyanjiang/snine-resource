@@ -1,13 +1,13 @@
 <template>
   <div class="com-title flex_start_center">
-      TO:{{name}}
+      TO:{{titleName}}
   </div>
 </template>
 
 <script>
 export default {
   props:{
-    name:{
+    titleName:{
       type: String,
       default: ''
     }
@@ -16,10 +16,9 @@ export default {
 </script>
 <style lang='less' scoped>
 .com-title{
-  color:rgba(0,0,0,.45);
   padding: 10px 15px;
+  font-size: 16px;
   position: relative;
-  // box-shadow: 0 4px 8px 0 rgba(7,17,27,.1);
   font-style: oblique;
   height: 30px;
   z-index: -1;

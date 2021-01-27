@@ -13,7 +13,7 @@
                 v-for="(route, index) in item.routes"
                 :icon="route.iconPath"
                 :key="index"
-                ><span style="width: 100%,height:100%" @click="clickItem(route)">{{ route.routeName }}</span></el-dropdown-item
+                ><span style="width: 100%,height:100%,padding: 10px" @click="clickItem(route)">{{ route.routeName }}</span></el-dropdown-item
               >
             </el-dropdown-menu>
           </el-dropdown>

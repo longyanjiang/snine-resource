@@ -49,8 +49,9 @@ const upload = multer({dest: '../public/files',limits: {
  *          description: 提示信息
  * */
 router.post('/file', upload.any(), async(req, res) => {
-    const {uploadUserId = -1, uploadType = 2, classify = -1, fileStatus = 0 } = req.body
+    let {uploadUserId = -1, uploadType = 2, classify = -1, fileStatus = 0 } = req.body
     /** 1:首先拿到用户上传的文件 储存在req.files中 */
+    uploadUserId = req.user.id
     const allFiles = req.files
     /** 2:判断有没有files文件和images文件夹 没有就创建，同步方法 */
     isHasDir()

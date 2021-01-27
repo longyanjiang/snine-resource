@@ -18,12 +18,3 @@ export default {
     },
 }
 </script>
-
-<style lang='less' scoped>
-.app-layout-wrap{
-    height: 100vh;
-}
-.app-content{
-    z-index: -1;
-}
-</style>

@@ -1,9 +1,11 @@
 <template>
   <div class="app-layout-wrap">
     <home-header />
+    
     <div class="app-content">
       <slot></slot>
     </div>
+
     <app-footer />
   </div>
 </template>
@@ -18,8 +20,8 @@ export default {
   },
 };
 </script>
-
 <style lang='less' scoped>
+
 .app-content{
     padding: 75px 0 0 0;
 }

@@ -16,6 +16,11 @@ h5,
 h6 {
   margin: 0;
 }
+body,
+html {
+  width: 100%;
+  height: 100%;
+}
 /*===== 统一设置列表的margin和padding，以及列表表形式 =====*/
 menu,
 ul,
@@ -25,6 +30,12 @@ ol {
   padding: 0;
 }
 /*===== 全局定义字体以及页面背景 =====*/
+body {
+  font: 14px/1.5 'Helvetica Neue', Helvetica, Arial, 'Microsoft Yahei', 'Hiragino Sans GB', 'Heiti SC', 'WenQuanYi Micro Hei', sans-serif;
+  word-spacing: 1px;
+  -webkit-font-smoothing: antialiased;
+  background: #f5f7fd;
+}
 h1,
 h2,
 h3,

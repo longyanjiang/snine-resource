@@ -1,32 +1,18 @@
 <template>
-  <div class="page-home">
-    <div class="page-home-l flex_column">
-      <div class="title">
-        <!-- <com-title name="文章列表" /> -->
+  <div class="page_home flex_between" >
+    <div class="page_home_l flex_3 flex_column" :style="{ zIndex: isOpenDrawer ? '-1' : '0' }">
+      <div class="flex_1">
+        <com-title titleName='我最新上传的图片' />
       </div>
-      <com-title name="我上传的文章资源列表" />
-      <div class="article scroll-none">
-        <com-list :listData="myAllArticles" type="md" />
-      </div>
-      <com-title name="我上传的图片资源列表" />
-      <div class="images scroll-none">
-        <com-list :listData="myAllImgs" />
-      </div>
-      <com-title name="我上传的文件资源列表" />
-      <div class="file scroll-none">
-        <com-list :listData="myAllImgs" type="file" />
+      <div class="flex_1">
+        <com-title titleName='我最新上传的文章' />
       </div>
     </div>
-    <div class="page-home-r flex_column">
-      <div class="home-public-top flex_between" :style="{ zIndex: isOpenDrawer ? '-1' : '0' }" >
-        <div class="article-list">
-          <com-title name="热门文章推荐" />
-        </div>
-        <div class="chart">
-          <div id="myChart"></div>
-        </div>
-      </div>
-      <div class="home-public-btm"></div>
+
+    <div class="page_home_r flex_5 flex_column" :style="{ zIndex: isOpenDrawer ? '-1' : '0' }">
+      <com-image-list :list="myAllImgs" name="我的上传" />
+      <com-image-list :list="myAllImgs" name="精选壁纸" style="marginTop: 17px"/>
+      <div class="time flex_1 flex_end">当前时间{{date}}</div>
     </div>
   </div>
 </template>
@@ -34,6 +20,7 @@
 <script>
 import ComTitle from "@/components/Base/ComTitle/ComTitle.vue";
 import ComList from "@/components/Base/ComList/ComList.vue";
+import ComImageList from "@/components/Base/ComImageList/ComImageList.vue";
 export default {
   head() {
     return {
@@ -44,20 +31,26 @@ export default {
   components: {
     ComTitle,
     ComList,
+    ComImageList
   },
   data() {
     return {
       myAllImgs: [],
       myImgCount: "",
-      myAllArticles: []
+      myAllArticles: [],
+      date: new Date()
     };
   },
   methods: {
-    async initData(){
-      const [allImgs,allArticle] = await Promise.all([await this.$myApi.query.GetQueryAllImg(),await this.$myApi.query.GetQueryArticle()])
+    async initData() {
+      const [allImgs, allArticle] = await Promise.all([
+        await this.$myApi.query.GetQueryAllImg(),
+        await this.$myApi.query.GetQueryArticle(),
+      ]);
       console.log(allImgs);
       this.myAllImgs = allImgs.data.rows;
       this.myAllArticles = allArticle.data.rows;
+      this.nowTimes()
     },
     echartsInit() {
       let myChart = this.$echarts.init(document.getElementById("myChart"));
@@ -88,73 +81,56 @@ export default {
         ],
       });
     },
+    timeFormate(timeStamp) {
+      let year = new Date(timeStamp).getFullYear();
+      let month =new Date(timeStamp).getMonth() + 1 < 10? "0" + (new Date(timeStamp).getMonth() + 1): new Date(timeStamp).getMonth() + 1;
+      let date =new Date(timeStamp).getDate() < 10? "0" + new Date(timeStamp).getDate(): new Date(timeStamp).getDate();
+      let hh =new Date(timeStamp).getHours() < 10? "0" + new Date(timeStamp).getHours(): new Date(timeStamp).getHours();
+      let mm =new Date(timeStamp).getMinutes() < 10? "0" + new Date(timeStamp).getMinutes(): new Date(timeStamp).getMinutes();
+      let ss =new Date(timeStamp).getSeconds() < 10? "0" + new Date(timeStamp).getSeconds(): new Date(timeStamp).getSeconds();
+      this.date = year + "年" + month + "月" + date +"日"+" "+hh+":"+mm+':'+ss ;
+    },
+    nowTimes(){
+      setInterval(() => {
+       this.timeFormate(new Date())
+      }, 1000);
+    },
   },
   created() {},
   computed: {
     isOpenDrawer: function () {
       return this.$store.state.status.isDrawerOpen;
     },
+    time: function(){
+      return new Date()
+    }
   },
   mounted() {
     this.initData();
-    this.echartsInit();
+    // this.echartsInit();
   },
 };
 </script>
 <style lang='less' scoped>
-.page-home {
-  padding: 0 20px;
-  display: flex;
-  justify-content: space-between;
+.page_home {
+  padding: 0 20px 20px;
   height: calc(100vh - 75px);
-  &-l {
-    flex: 4;
-    .title {
-      // background: yellow;
-      // height: 50px;
-    }
-    .article {
-      flex: 1;
-      // background: blueviolet;
-      overflow-y: scroll;
-      border-bottom: 1px solid rgba(7, 17, 27, 0.1);
-    }
-    .images {
-      flex: 1;
-      overflow-y: scroll;
-      border-bottom: 1px solid rgba(7, 17, 27, 0.1);
-    }
-    .file {
-      flex: 1;
-      overflow-y: scroll;
-      border-bottom: 1px solid rgba(7, 17, 27, 0.1);
-    }
+  &_l{
+    border-radius: 10px;
+    background: #fff;
+    height: 98%;
+    margin-right: 15px;
   }
-  &-r {
-    margin-left: 20px;
-    flex: 6;
-    .home-public-top {
-      flex: 3;
-      // z-index: -1;
-      .article-list {
-        padding: 0 15px;
-        flex: 1;
-        border: 1px solid turquoise;
-      }
-      .chart {
-        padding: 0 15px;
-        flex: 1;
-        #myChart {
-          width: 100%;
-          height: 80%;
-          z-index: 0;
-        }
-      }
-    }
-    .home-public-btm {
-      flex: 2;
-      background: yellowgreen;
+  &_r{
+    padding: 0 20px 20px;
+    .time{
+      background: #fff;
+      border-radius: 10px;
+      margin-top: 15px;
+      align-items: center;
+      padding-right: 10px;
     }
   }
 }
 </style>
+

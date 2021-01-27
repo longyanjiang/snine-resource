@@ -1,9 +1,9 @@
 <template>
   <div class="uploadCom">
-    <!-- <div @click="openDrawer" class="uploadCom-btn">
+    <div @click="openDrawer" class="uploadCom-btn">
         <i class="iconfont icon-shangchuan"></i>
         <span>上传</span>
-    </div> -->
+    </div>
     <el-drawer title="MAX LENGTH 20 MB" direction="ttb" size='50%' :modal-append-to-body='bool' :wrapperClosable='bool' :visible.sync="drawer" @close='closeDrawer'>
       <div class="upload-content">
         <div class="upload-content-top">
@@ -41,7 +41,7 @@
             </div>
         </div>
         
-        <div class="upload-list" v-if="type === 1" >
+        <div class="upload-list" v-if="type === 1" > 
           <div class="upload-list-item" v-for="(item,index) in previewImgsArr" :key="index">
               <el-image style="width: 100%; height: 100%" :src="item" fit="fill"></el-image>
               <span class="mask">
@@ -51,7 +51,7 @@
           </div>
         </div>
 
-        <div class="upload-list" v-if="type == 3" >
+        <!-- <div class="upload-list" v-if="type == 3" >
           <div class="upload-list-item" v-for="(item,index) in previewImgsArr" :key="index">
               <el-image style="width: 100%; height: 100%" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2326714361,906381575&fm=26&gp=0.jpg" fit="fill"></el-image>
               <span class="mask">
@@ -59,9 +59,9 @@
                   <i class="el-icon-delete" @click="removeImg(index)"></i>
               </span>
           </div>
-        </div>
+        </div> -->
       </div>
-      <el-button @click="uploadFile" class="upload-button">上传{{className}}</el-button>
+      <el-button @click="uploadFile" class="upload-button">上传{{className}}{{type}}</el-button>
     </el-drawer>
     <el-dialog :visible.sync="dialogVisible" :modal='bool'>
         <img width="100%" :src="dialogImageUrl" alt="">
@@ -94,10 +94,11 @@ export default {
 
     tirggerFileAll(e) {
       const files = e.target.files;
-      const passType = ['markdown']
+      // const passType = ['markdown']
+      const passType = ['png','jpg','jpeg','gif']
       let articles = [].filter.call(files,(t)=>{
-          const type = t.type.split('/')[1]
-          return passType.includes(type) //因为拖曳没有版本禁止图片拖动其他格式文件，直接过滤掉非图片的文件
+          const fileType = t.type.split('/')[1]
+          return passType.includes(fileType) //因为拖曳没有版本禁止图片拖动其他格式文件，直接过滤掉非图片的文件
       });
       console.log('articlesarticles',articles);
       [].forEach.call(articles, this.readAndPreview);
@@ -132,7 +133,7 @@ export default {
     }, //把图片转换成bolb对象再分别存入预览上传数组
 
     openDrawer(type) {
-      this.type = type
+      this.type = 1
       this.$store.commit('status/SET_ISDRAWEROPEN', true)
       this.drawer = true;
       setTimeout(() => {
@@ -163,7 +164,7 @@ export default {
       for (let i = 0; i < this.uploadFileArr.length; i++) {
         formData.append("files", this.uploadFileArr[i]);
       }
-      const result = await this.$myApi.upload.PostUploadArticle(formData)
+      const result = await this.$myApi.upload.PostUploadFile(formData)
       console.log(result);
       this.successImgs = [...this.successImgs, ...result.data]
       this.previewImgsArr = [], //存放本地图片的预览地址

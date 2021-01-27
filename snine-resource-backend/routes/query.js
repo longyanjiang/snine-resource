@@ -11,7 +11,7 @@ router.get('/allImg', async (req, res) => {
     let where = {
         uploadUserId: req.user.id,
         filename: req.query.keyword ? {[Op.like]: '%' + req.query.keyword + '%'} : '',
-        fileStatus: 1  //查询审核通过的图片
+        // fileStatus: 1  //查询审核通过的图片
     };
     const result = await models.tb_file.findAndCountAll({
         where:removeEmpty(where),
