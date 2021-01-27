@@ -1,0 +1,34 @@
+a {
+  text-decoration: none;
+}
+img {
+  -webkit-user-drag: none;
+}
+*:focus {
+  outline: none;
+}
+.el-upload-list__item {
+  width: 200px;
+  width: 20%;
+  height: 30px;
+}
+.el-upload-list {
+  margin-left: 30px;
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+}
+.el-upload-list__item:first-child {
+  margin-top: 5px;
+}
+.el-upload {
+  width: 500px;
+  display: flex;
+  justify-content: center;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+html {
+  overflow: hidden;
+}

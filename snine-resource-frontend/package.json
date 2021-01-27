@@ -1,0 +1,26 @@
+{
+  "name": "snine-resource-froend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint": "eslint pages"
+  },
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "dayjs": "^1.10.3",
+    "echarts": "^4.9.0",
+    "element-ui": "^2.13.2",
+    "nuxt": "^2.14.6",
+    "v-clipboard": "^2.2.3"
+  },
+  "devDependencies": {
+    "@nuxtjs/axios": "^5.12.5",
+    "@nuxtjs/proxy": "^2.1.0",
+    "less": "^4.0.0",
+    "less-loader": "^7.2.0"
+  }
+}

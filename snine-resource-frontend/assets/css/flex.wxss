@@ -1,0 +1,30 @@
+.flex_center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex_between {
+  display: flex;
+  justify-content: space-between;
+}
+.flex_column {
+  display: flex;
+  flex-direction: column;
+}
+.flex_start {
+  display: flex;
+  justify-content: flex-start;
+}
+.flex_start_center {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.flex_end {
+  display: flex;
+  justify-content: flex-end;
+}
+.scroll-none::-webkit-scrollbar {
+  display: none;
+  /*隐藏滚动条*/
+}

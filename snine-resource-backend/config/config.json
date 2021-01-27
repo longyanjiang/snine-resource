@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "dev-resource",
+    "password": "@Sunny521",
+    "database": "dev-resource",
+    "host": "42.192.77.35",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "dev-resource",
+    "password": "@Sunny521",
+    "database": "dev-resource",
+    "host": "42.192.77.35",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "snine-resource",
+    "password": "@Sunny521",
+    "database": "snine-resource",
+    "host": "42.192.77.35",
+    "dialect": "mysql"
+  }
+}
