@@ -1,8 +1,6 @@
 <template>
   <div class="app-menu-list">
     <ul>
-      <com-upload-public />
-      <!-- <li><i class='iconfont icon-shangchuan'></i>上传</li> -->
       <li v-for="(nav, index) in navList" :key="index">
         <nuxt-link :to="nav.path" active-class="current">
           <i :class='nav.icon'></i>
@@ -10,24 +8,16 @@
         </nuxt-link>
       </li>
     </ul>
-    
   </div>
 </template>
 
 <script>
-import ComUploadPublic from '@/components/Base/ComUploadPublic/ComUploadPublic'
 export default {
   props: {
     navList: {
       type: Array,
       default: [],
     },
-  },
-  components:{
-    ComUploadPublic
-  },
-  data() {
-    return {};
   },
 };
 </script>

@@ -101,10 +101,10 @@ export default {
       if (result.code == 1) {
         this.$notify({ title: "成功", message: result.msg, type: "success" });
         let userInfo = result.data;
-        console.log(userInfo);
         this.$store.commit("user/SET_USERINFO", userInfo);
-        console.log(this.$store.state);
-        this.$router.push({ name: "home" });
+        setTimeout(() => {
+          this.$router.push({ name: "home" });
+        }, 1000);
       } else {
         this.$notify({ title: "错误", message: result.msg, type: "error" });
       }

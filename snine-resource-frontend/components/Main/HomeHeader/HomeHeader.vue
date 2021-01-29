@@ -17,50 +17,30 @@ export default {
     return {
       menuList: [
         {
-          btnName: "上传",
-          icon: "iconfont icon-shangchuan",
-          routes: [
-            {
-              iconPath: "el-icon-plus",
-              routeName: "图片上传",
-              type: 1
-            },
-            {
-              iconPath: "el-icon-plus",
-              routeName: "文件上传",
-              type: 2
-            },
-            {
-              iconPath: "el-icon-plus",
-              routeName: "文章上传",
-              type: 3
-            },
-          ],
-        },
-        {
           btnName: "xx",
           icon: "iconfont icon-yonghutouxiang",
           routes: [
             {
-              iconPath: "el-icon-plus",
+              iconPath: "iconfont icon-shezhi",
               routeName: "修改密码",
             },
             {
-              iconPath: "el-icon-plus",
+              iconPath: "iconfont icon-gerenzhongxin-zhong",
               routeName: "个人中心",
             },
           ],
         },
         {
           btnName: "关于",
-          icon: "iconfont icon-shangchuan",
+          icon: "iconfont icon-guanyu",
           routes: [
             {
-              iconPath: "el-icon-plus",
+              iconPath: "iconfont icon-guanyu",
               routeName: "关于我们",
+              path: "/about"
             },
             {
-              iconPath: "el-icon-plus",
+              iconPath: "iconfont icon-icon-bangzhu",
               routeName: "帮助使用",
             },
           ],

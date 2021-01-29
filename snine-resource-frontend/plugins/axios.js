@@ -2,7 +2,7 @@ export default function (ctx) {
     const { $axios, redirect, store } = ctx
     // console.log('拦截的地方拿到的ctx', ctx);
     $axios.defaults.baseURL = `http://localhost:5288/api`
-    $axios.defaults.timeout = 5000
+    $axios.defaults.timeout = 15000
 
     // request interceptor
     $axios.interceptors.request.use(
@@ -17,7 +17,7 @@ export default function (ctx) {
         // console.log('本次请求地址 ' + config.url,config)
         // const token = store.state.user.userInfo.token;
         const storeCache = sessionStorage.getItem('storeCache')
-        const token = JSON.parse(storeCache).user.userInfo.token
+        const token = store.state.user.userInfo.token || JSON.parse(storeCache).user.userInfo.token
         if (token) {
             config.headers.Authorization = token
         }

@@ -49,8 +49,8 @@ export default {
   },
   methods:{
     clickItem( item ) {
-      if(!item.type) return;
-      this.$refs.drawer.openDrawer(item.type)
+      console.log(item,item.path);
+      this.$router.push({ path: item.path });
     }
   }
 };

@@ -19,9 +19,9 @@ export default {
   padding: 10px 15px;
   font-size: 16px;
   position: relative;
-  font-style: oblique;
+  top: 0;
+  left: 0;
   height: 30px;
-  z-index: -1;
   &::before{
     display: block;
     content: "";

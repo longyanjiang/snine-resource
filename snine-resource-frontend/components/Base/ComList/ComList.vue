@@ -65,8 +65,8 @@ export default {
 <style lang='less' scoped>
 ul{
     padding: 0 10px 0 10px;
-    height: 99%;
-    // box-shadow: 0 4px 8px 0 rgba(7,17,27,.1);
+    box-shadow: 0 4px 8px 0 rgba(7,17,27,.1);
+    min-height: 200px;
 }
 li{
     line-height: 30px;

@@ -1,4 +1,4 @@
-@import '//at.alicdn.com/t/font_2297505_808uqgd6gib.css';
+@import '//at.alicdn.com/t/font_2297505_kasn4uww1u.css';
 a {
   text-decoration: none;
 }
@@ -27,6 +27,12 @@ img {
   display: flex;
   justify-content: center;
 }
+body::-webkit-scrollbar {
+  display: none;
+}
+html {
+  overflow: hidden;
+}
 /*===== 参考 http://linxz.github.io/tianyizone/css_reset.html =====*/
 /*===== 清除默认的margin的属性值 =====*/
 body,
@@ -45,6 +51,11 @@ h5,
 h6 {
   margin: 0;
 }
+body,
+html {
+  width: 100%;
+  height: 100%;
+}
 /*===== 统一设置列表的margin和padding，以及列表表形式 =====*/
 menu,
 ul,
@@ -54,6 +65,12 @@ ol {
   padding: 0;
 }
 /*===== 全局定义字体以及页面背景 =====*/
+body {
+  font: 14px/1.5 'Helvetica Neue', Helvetica, Arial, 'Microsoft Yahei', 'Hiragino Sans GB', 'Heiti SC', 'WenQuanYi Micro Hei', sans-serif;
+  word-spacing: 1px;
+  -webkit-font-smoothing: antialiased;
+  background: #f5f7fd;
+}
 h1,
 h2,
 h3,
@@ -150,17 +167,76 @@ caption {
   justify-content: center;
   align-items: center;
 }
+.flex_between {
+  display: flex;
+  justify-content: space-between;
+}
 .flex_column {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 .flex_start {
   display: flex;
   justify-content: flex-start;
 }
+.flex_start_center {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
 .flex_end {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
+}
+.flex_warp {
+  display: flex;
+  flex-wrap: wrap;
+}
+.flex_column_betwen {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.flex_1 {
+  flex: 1;
+}
+.flex_2 {
+  flex: 2;
+}
+.flex_3 {
+  flex: 3;
+}
+.flex_4 {
+  flex: 4;
+}
+.flex_5 {
+  flex: 5;
+}
+.m_l_5 {
+  margin-left: 5px;
+}
+.m_l_10 {
+  margin-left: 10px;
+}
+.m_l_15 {
+  margin-left: 15px;
+}
+.m_r_5 {
+  margin-right: 5px;
+}
+.m_r_10 {
+  margin-right: 10px;
+}
+.m_r_15 {
+  margin-right: 15px;
+}
+.h {
+  height: 100%;
+}
+.w {
+  width: 100%;
+}
+.scroll_none::-webkit-scrollbar {
+  display: none;
+  /*隐藏滚动条*/
 }

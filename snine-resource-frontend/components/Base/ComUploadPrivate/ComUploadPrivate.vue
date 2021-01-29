@@ -61,7 +61,7 @@
           </div>
         </div> -->
       </div>
-      <el-button @click="uploadFile" class="upload-button">上传{{className}}{{type}}</el-button>
+      <el-button @click="uploadFile" class="upload-button">上传{{className}}</el-button>
     </el-drawer>
     <el-dialog :visible.sync="dialogVisible" :modal='bool'>
         <img width="100%" :src="dialogImageUrl" alt="">

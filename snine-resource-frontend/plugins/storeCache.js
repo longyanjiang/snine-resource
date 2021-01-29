@@ -6,6 +6,8 @@ export default function(ctx) {
     // 页面加载完成  将session中的store数据
     window.addEventListener('load', () => {
       const storeCache = sessionStorage.getItem('storeCache')
+      console.log( ctx.store.state.user.userInfo,' ctx.store.state.user.userInfo.token');
+      console.log(JSON.parse(storeCache));
       if (storeCache) {
         // 将session中的store数据替换到store中
         ctx.store.replaceState(JSON.parse(storeCache))
